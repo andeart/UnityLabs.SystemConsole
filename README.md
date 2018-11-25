@@ -1,6 +1,6 @@
 # System Console for Unity
 
-_System Console for Unity_ is a Unity tool that lets you set the output of `System.Console` to Unity's Editor Console, giving you visibility into otherwise invisible logs. This is useful in seeing `System.Console output` from third-party plugins, internal Unity logs, and other C# libraries through Unity's Editor Console.
+_System Console for Unity_ is a Unity tool that lets you set the output of `System.Console` to Unity's Editor Console, giving you visibility into otherwise invisible logs. This is useful in seeing `System.Console` output from third-party plugins, internal Unity logs, and other C# libraries through Unity's Editor Console.
 
 ## Usage
 
