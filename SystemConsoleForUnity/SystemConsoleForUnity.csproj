@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Andeart.Unity.SystemConsole</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>0.9.1</Version>
+    <Authors>ANURAG DEVANAPALLY</Authors>
+    <Company>Andeart</Company>
+    <Copyright>Copyright © ANURAG DEVANAPALLY  2018</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>References\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
