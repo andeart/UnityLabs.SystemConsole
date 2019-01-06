@@ -3,7 +3,7 @@ using System.Text;
 using UnityEngine;
 
 
-namespace Andeart.Unity.SystemConsole.Core
+namespace Andeart.UnityLabs.SystemConsole
 {
 
     internal class UnityConsoleWriter : TextWriter

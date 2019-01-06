@@ -2,7 +2,7 @@
 using System.IO;
 
 
-namespace Andeart.Unity.SystemConsole.Core
+namespace Andeart.UnityLabs.SystemConsole
 {
 
     public static class SystemConsoleLoggerService
