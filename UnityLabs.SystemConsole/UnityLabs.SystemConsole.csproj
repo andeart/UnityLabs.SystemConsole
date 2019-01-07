@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Andeart.UnityLabs.SystemConsole</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.0.0.1</Version>
+    <Authors>ANURAG DEVANAPALLY</Authors>
+    <Company>Andeart</Company>
+    <Copyright>Copyright © ANURAG DEVANAPALLY 2019</Copyright>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Description>Unity tool that lets you set the output of System.Console to Unity's Editor Console, giving you visibility into otherwise invisible logs.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Users\anurag\Documents\Projects\UnityLabs.SystemConsole\UnityLabs.SystemConsole\UnityLabs.SystemConsole.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEditor">
+      <HintPath>References\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>References\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
