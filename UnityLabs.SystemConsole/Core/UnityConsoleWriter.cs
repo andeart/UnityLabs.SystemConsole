@@ -11,12 +11,12 @@ namespace Andeart.UnityLabs.SystemConsole
 
         private readonly StringBuilder _buffer;
 
+        public override Encoding Encoding => Encoding.Default;
+
         public UnityConsoleWriter ()
         {
             _buffer = new StringBuilder ();
         }
-
-        public override Encoding Encoding => Encoding.Default;
 
         public override void Flush ()
         {
