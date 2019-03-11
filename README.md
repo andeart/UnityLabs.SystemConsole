@@ -35,7 +35,7 @@ Note that the Editor context menu automatically updates its "checkmark" if this 
 
 ## Installation
 
-- Download the `Andeart.SystemConsole.dll` file from [the NuGet page](todo_fill_nuget_link), or from [the Github releases page](https://github.com/andeart/UnityLabs.SystemConsole/releases/latest).
+- Download the `Andeart.SystemConsole.dll` file from [the NuGet page](https://www.nuget.org/packages/Andeart.SystemConsole), or from [the Github releases page](https://github.com/andeart/UnityLabs.SystemConsole/releases/latest).
 - Add this file anywhere in your Unity project. Any sub-directory under Assets will work- **it does not need to be under an Editor folder**. If you want to be able to change settings at run time, then this **should not** be under an Editor folder.
 - Optional: Also drop the `Andeart.SystemConsole.pdb` and `Andeart.SystemConsole.xml` files in the same location if you're interested in debugging.
 - All the functionality mentioned above should now automatically be available in your code and Unity Editor.
