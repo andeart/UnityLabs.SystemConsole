@@ -1,5 +1,9 @@
 # UnityLabs.SystemConsole
 
+[![travis](https://img.shields.io/travis/andeart/UnityLabs.SystemConsole.svg)](https://travis-ci.org/andeart/UnityLabs.SystemConsole)<br />
+[![nuget-release](https://img.shields.io/nuget/v/Andeart.SystemConsole.svg)](https://www.nuget.org/packages/Andeart.SystemConsole)<br />
+[![github-release](https://img.shields.io/github/release/andeart/UnityLabs.SystemConsole.svg)](https://github.com/andeart/UnityLabs.SystemConsole/releases/latest)<br/>
+
 Wouldn't it be cool to have your code (that has no `UnityEngine` dependencies) be able to print logs to output like...
 ```csharp
 Console.Write ("This is message from my own DLL, that has no UnityEngine dependencies.");
@@ -8,7 +12,6 @@ Console.Write ("This is message from my own DLL, that has no UnityEngine depende
 ![console-log](https://user-images.githubusercontent.com/6226493/54099829-7afc4380-4378-11e9-9b5a-1db0ea5aa351.png)
 
 If you think so, you came to the right place!
-
 
 **UnityLabs.SystemConsole** is a tool that lets you set the output of `System.Console` to Unity's Editor console, giving you visibility into otherwise invisible logs. This is useful in viewing `System.Console` output from third-party plugins, internal Unity logs, and other C# libraries in real-time on the Editor console.
 
