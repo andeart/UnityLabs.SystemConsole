@@ -1,9 +1,6 @@
 os: osx
-language: csharp
-solution: ./SystemConsole/SystemConsole.sln
-dotnet: 2.2.104
+language: generic
 python: 3.7
-mono: latest
 env:
   global:
     - LULLAPY_ROOT=$TRAVIS_BUILD_DIR/lullapy
@@ -12,10 +9,10 @@ env:
   matrix:
     - CONFIG_NAME=Release
     - CONFIG_NAME=Debug
+before_install:
+  - chmod a+x ./tools/*.sh
 install:
   - pip3 install -e $LULLAPY_ROOT
+  - ./tools/install-unity.sh
 script:
-  - python3 -m andeart.lullapy.netrestore -s "$TRAVIS_SOLUTION"
-  - python3 -m andeart.lullapy.netbuild -s "$TRAVIS_SOLUTION" -c "$CONFIG_NAME"
-  - python3 -m andeart.lullapy.netcopy -a "$ASSEMBLY_NAME" -d "$ASSEMBLY_BIN_PATH/$CONFIG_NAME" -e "dll;xml;pdb" -t "./unity-dirs.txt" -c
-  - python3 -m andeart.lullapy.plainexist -f "./SystemConsole.Demo/Assets/Libraries/$ASSEMBLY_NAME/$ASSEMBLY_NAME.dll;./SystemConsole.Demo/Assets/Libraries/$ASSEMBLY_NAME/$ASSEMBLY_NAME.xml;./SystemConsole.Demo/Assets/Libraries/$ASSEMBLY_NAME/$ASSEMBLY_NAME.pdb"
+  - python3 -m andeart.lullapy.unitytest -u "/Applications/Unity/Unity.app/Contents/MacOS/Unity" -p "./SystemConsole.Demo" -m editmode -r "$(pwd)/testresults.xml"
