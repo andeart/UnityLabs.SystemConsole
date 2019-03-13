@@ -7,7 +7,6 @@ env:
     - ASSEMBLY_NAME=Andeart.SystemConsole
     - ASSEMBLY_BIN_PATH=./SystemConsole/SystemConsole/bin
   matrix:
-    - CONFIG_NAME=Release
     - CONFIG_NAME=Debug
 cache:
     directories:
