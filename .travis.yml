@@ -10,7 +10,7 @@ env:
     - CONFIG_NAME=Debug
 cache:
     directories:
-     - /Applications/Unity/
+     - /Applications
 before_install:
   - chmod a+x ./tools/*.sh
 install:
