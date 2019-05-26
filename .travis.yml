@@ -17,4 +17,4 @@ install:
   - pip3 install -e $LULLAPY_ROOT
   - ./tools/install-unity.sh
 script:
-  - python3 -m andeart.lullapy.unitytest -u "/Applications/Unity/Unity.app/Contents/MacOS/Unity" -p "./SystemConsole.Demo" -m editmode
+  - python3 -m andeart.lullapy.unitytest -u "/Applications/Unity/Unity.app/Contents/MacOS/Unity" -p "$TRAVIS_BUILD_DIR/SystemConsole.Demo" -m editmode
