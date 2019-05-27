@@ -14,7 +14,7 @@ cache:
      - /Applications
 before_install:
   - chmod a+x ./tools/*.sh
-  - chmod -R a+rw /Applications/Unity
+  - chmod -R a+rw /Applications
 install:
   - pip3 install -e $LULLAPY_ROOT
   - ./tools/install-unity.sh
