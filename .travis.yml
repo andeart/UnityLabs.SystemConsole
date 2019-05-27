@@ -7,14 +7,15 @@ env:
     - ASSEMBLY_NAME=Andeart.SystemConsole
     - ASSEMBLY_BIN_PATH=./SystemConsole/SystemConsole/bin
     - UNITY_NOPROXY="localhost,127.0.0.1"
+    - UNITY_DOWNLOAD_CACHE="$TRAVIS_BUILD_DIR/unity_download_cache"
   matrix:
     - CONFIG_NAME=Debug
 cache:
     directories:
-     - /Applications
+      - unity_download_cache
 before_install:
   - chmod a+x ./tools/*.sh
-  - chmod -R a+rw /Applications
+  - chmod -R a+rw ./unity_download_cache
 install:
   - pip3 install -e $LULLAPY_ROOT
   - ./tools/install-unity.sh
