@@ -20,4 +20,5 @@ install:
   - pip3 install -e $LULLAPY_ROOT
   - ./tools/install-unity.sh
 script:
+  - ./tools/before_script.sh
   - ./tools/run-unity.sh

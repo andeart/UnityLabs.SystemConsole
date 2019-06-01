@@ -1,65 +1,33 @@
 #! /bin/sh
 
 echo "Running Unity"
-UNITY_PATH="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
+set -x
 
-cd /Users/travis/build/andeart/UnityLabs.SystemConsole/SystemConsole.Demo
+export UNITY_EXECUTABLE=${UNITY_EXECUTABLE:-"/Applications/Unity/Unity.app/Contents/MacOS/Unity"}
 
-activateLicense() {
-    echo "Activating Unity..."
+TEST_PLATFORM=editmode
 
-    ${UNITY_PATH} \
-        -logFile "${TRAVIS_BUILD_DIR}/unity.activation.log" \
-        -username "${UNITY_USER}" \
-        -password "${UNITY_PWD}" \
-        -batchmode \
-        -noUpm \
-        -quit
-    echo "Unity activation log"
-    cat "${TRAVIS_BUILD_DIR}/unity.activation.log"
-}
+echo "Testng for $TEST_PLATFORM"
 
-returnLicense() {
-    echo "Return license"
+${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' /opt/Unity/Editor/Unity} \
+  -projectPath $(pwd) \
+  -runTests \
+  -testPlatform $TEST_PLATFORM \
+  -testResults $(pwd)/$TEST_PLATFORM-results.xml \
+  -logFile \
+  -batchmode
 
-    ${UNITY_PATH} \
-        -logFile "${TRAVIS_BUILD_DIR}/unity.returnlicense.log" \
-        -batchmode \
-        -returnlicense \
-        -quit
-    echo "Unity return license log"
-    cat "$(pwd)/unity.returnlicense.log"
-}
+UNITY_EXIT_CODE=$?
 
+if [ $UNITY_EXIT_CODE -eq 0 ]; then
+  echo "Run succeeded, no failures occurred";
+elif [ $UNITY_EXIT_CODE -eq 2 ]; then
+  echo "Run succeeded, some tests failed";
+elif [ $UNITY_EXIT_CODE -eq 3 ]; then
+  echo "Run failure (other failure)";
+else
+  echo "Unexpected exit code $UNITY_EXIT_CODE";
+fi
 
-unitTests() {
-    echo "Running editor unit tests for ${UNITY_PROJECT_NAME}"
-
-    ${UNITY_PATH} \
-        -batchmode \
-        -username "${UNITY_USER}" \
-        -password "${UNITY_PWD}" \
-        -logFile "${TRAVIS_BUILD_DIR}/unity.unittests.log" \
-        -projectPath $(pwd) \
-        -runEditorTests \
-        -editorTestsResultFile "${TRAVIS_BUILD_DIR}/unity.unittests.xml"
-
-    rc0=$?
-    echo "Unit test log"
-    cat "${TRAVIS_BUILD_DIR}/unity.unittests.xml"
-
-    # exit if tests failed
-    if [ $rc0 -ne 0 ]; then { echo "Unit tests failed"; exit $rc0; } fi
-}
-
-oldUnitTests() {
-    ${UNITY_PATH} -batchmode -runEditorTests -projectPath $(pwd) -logFile $(pwd)/unity.log
-
-    echo "Logs from build"
-    cat $(pwd)/unity.log
-}
-
-activateLicense
-unitTests
-
-exit 0
+cat $(pwd)/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
+exit $UNITY_TEST_EXIT_CODE
