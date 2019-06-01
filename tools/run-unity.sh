@@ -10,8 +10,8 @@ activateLicense() {
 
     ${UNITY_PATH} \
         -logFile "${TRAVIS_BUILD_DIR}/unity.activation.log" \
-        -username ${UNITY_USER} \
-        -password ${UNITY_PWD} \
+        -username "${UNITY_USER}" \
+        -password "${UNITY_PWD}" \
         -batchmode \
         -noUpm \
         -quit
@@ -37,8 +37,8 @@ unitTests() {
 
     ${UNITY_PATH} \
         -batchmode \
-        -username ${UNITY_USER} \
-        -password ${UNITY_PWD} \
+        -username "${UNITY_USER}" \
+        -password "${UNITY_PWD}" \
         -logFile "${TRAVIS_BUILD_DIR}/unity.unittests.log" \
         -projectPath $(pwd) \
         -runEditorTests \
