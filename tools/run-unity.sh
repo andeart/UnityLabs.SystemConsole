@@ -15,9 +15,21 @@ ${UNITY_EXECUTABLE} -batchmode -manualLicenseFile ${TRAVIS_BUILD_DIR}/Unity_lic.
 echo "Unity activation log"
 cat "${TRAVIS_BUILD_DIR}/unity.activation.log"
 
+${UNITY_EXECUTABLE} \
+    -logFile "${TRAVIS_BUILD_DIR}/unity.firstrun.log" \
+    -username "${UNITY_USER}" \
+    -password "${UNITY_PWD}" \
+    -batchmode \
+    -noUpm \
+    -quit
+echo "Unity first run log"
+cat "${TRAVIS_BUILD_DIR}/unity.firstrun.log"
+
 echo "Testing for $TEST_PLATFORM"
 
 ${UNITY_EXECUTABLE} \
+  -username "${UNITY_USER}" \
+  -password "${UNITY_PWD}" \
   -projectPath $(pwd) \
   -runTests \
   -testPlatform $TEST_PLATFORM \
