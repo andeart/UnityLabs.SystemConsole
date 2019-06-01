@@ -3,13 +3,19 @@
 echo "Running Unity"
 set -x
 
-export UNITY_EXECUTABLE=${UNITY_EXECUTABLE:-"/Applications/Unity/Unity.app/Contents/MacOS/Unity"}
+UNITY_EXECUTABLE="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
 
 TEST_PLATFORM=editmode
 
-echo "Testng for $TEST_PLATFORM"
+echo "Activating license"
 
-${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' /opt/Unity/Editor/Unity} \
+${UNITY_EXECUTABLE} -batchmode -manualLicenseFile ${TRAVIS_BUILD_DIR}/Unity_lic.ulf -logFile "${TRAVIS_BUILD_DIR}/unity.activation.log"
+echo "Unity activation log"
+cat "${TRAVIS_BUILD_DIR}/unity.activation.log"
+
+echo "Testing for $TEST_PLATFORM"
+
+${UNITY_EXECUTABLE} \
   -projectPath $(pwd) \
   -runTests \
   -testPlatform $TEST_PLATFORM \
@@ -30,4 +36,15 @@ else
 fi
 
 cat $(pwd)/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
+
+echo "Returning license"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -quit -batchmode -returnlicense
+${UNITY_EXECUTABLE} \
+        -logFile "${TRAVIS_BUILD_DIR}/unity.returnlicense.log" \
+        -batchmode \
+        -returnlicense \
+        -quit
+echo "Unity return license log"
+cat "${TRAVIS_BUILD_DIR}/unity.returnlicense.log"
+
 exit $UNITY_TEST_EXIT_CODE
