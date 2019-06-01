@@ -15,29 +15,29 @@ ${UNITY_EXECUTABLE} -batchmode -manualLicenseFile ${TRAVIS_BUILD_DIR}/Unity_lic.
 echo "Unity activation log"
 cat "${TRAVIS_BUILD_DIR}/unity.activation.log"
 
-# echo "Testing for $TEST_PLATFORM"
+echo "Testing for $TEST_PLATFORM"
 
-# ${UNITY_EXECUTABLE} \
-#   -projectPath $(pwd) \
-#   -runTests \
-#   -testPlatform $TEST_PLATFORM \
-#   -testResults $(pwd)/$TEST_PLATFORM-results.xml \
-#   -logFile \
-#   -batchmode
+${UNITY_EXECUTABLE} \
+  -projectPath $(pwd) \
+  -runTests \
+  -testPlatform $TEST_PLATFORM \
+  -testResults $(pwd)/$TEST_PLATFORM-results.xml \
+  -logFile \
+  -batchmode
 
-# UNITY_EXIT_CODE=$?
+UNITY_EXIT_CODE=$?
 
-# if [ $UNITY_EXIT_CODE -eq 0 ]; then
-#   echo "Run succeeded, no failures occurred";
-# elif [ $UNITY_EXIT_CODE -eq 2 ]; then
-#   echo "Run succeeded, some tests failed";
-# elif [ $UNITY_EXIT_CODE -eq 3 ]; then
-#   echo "Run failure (other failure)";
-# else
-#   echo "Unexpected exit code $UNITY_EXIT_CODE";
-# fi
+if [ $UNITY_EXIT_CODE -eq 0 ]; then
+  echo "Run succeeded, no failures occurred";
+elif [ $UNITY_EXIT_CODE -eq 2 ]; then
+  echo "Run succeeded, some tests failed";
+elif [ $UNITY_EXIT_CODE -eq 3 ]; then
+  echo "Run failure (other failure)";
+else
+  echo "Unexpected exit code $UNITY_EXIT_CODE";
+fi
 
-# cat $(pwd)/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
+cat $(pwd)/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
 
 echo "Returning license"
 ${UNITY_EXECUTABLE} \
