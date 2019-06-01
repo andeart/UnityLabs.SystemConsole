@@ -14,10 +14,10 @@ cache:
     directories:
       - unity_download_cache
 before_install:
-  - chmod a+x ./tools/*.sh
-  - chmod -R a+rw ./unity_download_cache
-  - chown -R travis:$travis /root
-  - chmod -R a+rw /root
+  - sudo chmod a+x ./tools/*.sh
+  - sudo chmod -R a+rw ./unity_download_cache
+  - sudo chown -R travis:$travis /root
+  - sudo chmod -R a+rw /root
 install:
   - pip3 install -e $LULLAPY_ROOT
   - ./tools/install-unity.sh
