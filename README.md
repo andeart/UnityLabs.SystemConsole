@@ -36,10 +36,16 @@ SystemConsoleLoggerService.IsEnabled = true;
 This can be useful when you have configurations that want to change this setting in builds, rather than in Editor.<br />
 Note that the Editor context menu automatically updates its "checkmark" if this SystemConsole is enabled/disabled in run time code.
 
+## Tests
+
+Both `EditMode` and `PlayMode` tests can be found in the [Unity project directory](https://github.com/andeart/UnityLabs.SystemConsole/tree/master/SystemConsole.Demo). Feel free to inspect/run these.
+
+Unfortunately, I have not been able to invoke these automatically on Travis-CI yet, because Unity's license-activation process via CLI is extremely frustrating to implement for the Personal edition (the Pro API is much simpler). If you know of a trick or two, I'd appreciate your help!
+
 ## Installation
 
 - Download the `Andeart.SystemConsole.dll` file from [the NuGet page](https://www.nuget.org/packages/Andeart.SystemConsole), or from [the Github releases page](https://github.com/andeart/UnityLabs.SystemConsole/releases/latest).
-- Add this file anywhere in your Unity project. Any sub-directory under Assets will work- **it does not need to be under an Editor folder**. If you want to be able to change settings at run time, then this **should not** be under an Editor folder.
+- Add this file anywhere in your Unity project. Any sub-directory under Assets will work- **it does not need to be under an Editor folder**. In fact, if you want to be able to change settings at run time, then this **should not** be under an Editor folder.
 - Optional: Also drop the `Andeart.SystemConsole.pdb` and `Andeart.SystemConsole.xml` files in the same location if you're interested in debugging.
 - All the functionality mentioned above should now automatically be available in your code and Unity Editor.
 
