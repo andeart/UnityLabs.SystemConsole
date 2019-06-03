@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -33,6 +34,7 @@ namespace Andeart.SystemConsole.Tests
         [Test]
         public void EnableSystemConsole_SimpleMessage_MessageLoggedInUnity ()
         {
+            TestContext.WriteLine ($"Is Editor playing? {EditorApplication.isPlaying}");
             Setup ();
 
             SystemConsoleLoggerService.IsEnabled = true;
@@ -41,12 +43,15 @@ namespace Andeart.SystemConsole.Tests
             TestContext.WriteLine ($"Console.Write: {trackerGuid}");
 
             PrintRecentLogsToTestContext ();
-            Assert.IsTrue (_recentLogs.Contains ("abc"), $"SystemConsole did not correctly log message: \"{trackerGuid}\" to Unity console.");
+            Assert.IsTrue (_recentLogs.Contains (trackerGuid), $"SystemConsole did not correctly log message: \"{trackerGuid}\" to Unity console.");
+
+            TestContext.WriteLine ($"Is Editor playing? {EditorApplication.isPlaying}");
         }
 
         [Test]
         public void DisableSystemConsole_SimpleMessage_MessagedNotLoggedInUnity ()
         {
+            TestContext.WriteLine ($"Is Editor playing? {EditorApplication.isPlaying}");
             Setup ();
 
             SystemConsoleLoggerService.IsEnabled = false;
@@ -56,6 +61,8 @@ namespace Andeart.SystemConsole.Tests
 
             PrintRecentLogsToTestContext ();
             Assert.IsFalse (_recentLogs.Contains (trackerGuid), $"SystemConsole logged message: \"{trackerGuid}\" to Unity console, when it should not have.");
+
+            TestContext.WriteLine ($"Is Editor playing? {EditorApplication.isPlaying}");
         }
 
         private void PrintRecentLogsToTestContext ()
