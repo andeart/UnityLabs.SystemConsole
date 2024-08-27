@@ -1,14 +1,15 @@
 # UnityLabs.SystemConsole
 
-[![travis](https://img.shields.io/travis/andeart/UnityLabs.SystemConsole.svg)](https://travis-ci.org/andeart/UnityLabs.SystemConsole)<br />
-[![nuget-release](https://img.shields.io/nuget/v/Andeart.SystemConsole.svg)](https://www.nuget.org/packages/Andeart.SystemConsole)<br />
-[![github-release](https://img.shields.io/github/release/andeart/UnityLabs.SystemConsole.svg)](https://github.com/andeart/UnityLabs.SystemConsole/releases/latest)<br/>
+[![nuget-release](https://img.shields.io/nuget/v/Andeart.SystemConsole.svg?logo=nuget&logoSize=auto)](https://www.nuget.org/packages/Andeart.SystemConsole)
+[![nuget-dls](https://img.shields.io/nuget/dt/Andeart.SystemConsole.svg?logo=nuget&logoSize=auto)](https://www.nuget.org/packages/Andeart.SystemConsole)<br />
+[![github-release](https://img.shields.io/github/release/andeart/UnityLabs.SystemConsole.svg?label=github&logo=github&logoSize=auto)](https://github.com/andeart/UnityLabs.SystemConsole/releases/latest)
+[![github-dls](https://img.shields.io/github/downloads/andeart/UnityLabs.SystemConsole/total.svg?logo=github&logoSize=auto)](https://github.com/andeart/UnityLabs.SystemConsole/releases/latest)<br/>
 
-Wouldn't it be cool to have your code (that has no `UnityEngine` dependencies) be able to print logs to output like...
+Wouldn't it be cool to have your .Net library (that has no `UnityEngine` dependencies) continue to write logs to output as usual, like...
 ```csharp
 Console.Write ("This is message from my own DLL, that has no UnityEngine dependencies.");
 ```
-... and be able to view that output in real-time in Unity's Editor console?
+... and once added to your Unity project, view the same logs in real-time within Unity's Editor console?<br/>
 ![console-log](https://user-images.githubusercontent.com/6226493/54099829-7afc4380-4378-11e9-9b5a-1db0ea5aa351.png)
 
 If you think so, you came to the right place!
